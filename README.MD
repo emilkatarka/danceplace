@@ -1,1 +1,1 @@
-dance place - a website containig info about different dance courses
+dance place - a web app containing info about different dance courses
