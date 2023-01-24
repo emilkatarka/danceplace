@@ -1,8 +1,11 @@
 .idea
 .vscode
+
 venv
 **/*.pyc
+
 .DS_Store
+
 db.sqlite3
 staticfiles
 
