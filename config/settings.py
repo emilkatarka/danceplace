@@ -149,3 +149,8 @@ INTERNAL_IPS = [
 # DEBUG_TOOLBAR_CONFIG = {
 #     'SHOW_TOOLBAR_CALLBACK': show_toolbar,
 # }
+
+AUTH_USER_MODEL = 'users.Account' # swappable field in class Meta of class User in auth. Configuring customuser because I've created my own model for users.
+LOGIN_REDIRECT_URL = 'home:home'
+
+
