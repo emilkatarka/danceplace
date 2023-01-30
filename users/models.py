@@ -18,6 +18,13 @@ class AccountManager(BaseUserManager):
         user.is_active = True
         user.save(using=self._db)
 
+        if user.is_instructor:
+            instructors_group = Group.objects.get(name=os.environ.get('DJ_GROUP_INSTRUCTORS'))
+            user.groups.add(instructors_group)
+        else:
+            students_group = Group.objects.get(name=os.environ.get('DJ_GROUP_STUDENTS'))
+            user.groups.add(students_group)
+
         return user
 
     def create_superuser(self, email, fullname, password=None):
@@ -36,6 +43,7 @@ class AccountManager(BaseUserManager):
 class Account(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(verbose_name='User email', max_length=60, unique=True)
     fullname = models.CharField(max_length=30, unique=True)
+    is_instructor = models.BooleanField(default=False)
     date_join = models.DateTimeField(verbose_name='Date joined', auto_now_add=True)
     last_login = models.DateTimeField(verbose_name='Last login', auto_now=True)
     is_admin = models.BooleanField(default=False)
