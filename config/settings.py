@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 
 import environ
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,9 +25,9 @@ environ.Env.read_env(os.path.join(BASE_DIR, 'env', '.env'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJ_SECRET_KEY')
-print('*' * 20)
-print(SECRET_KEY)
-print('*' * 20)
+# print('*' * 20)
+# print(SECRET_KEY)
+# print('*' * 20)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -87,11 +88,17 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': {}
 }
+
+DATABASE_URL = os.environ.get('DATABASE_URL')
+db_from_env = dj_database_url.config(
+    default=DATABASE_URL, conn_max_age=500, ssl_require=False #True
+)
+
+DATABASES['default'].update(db_from_env)
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
