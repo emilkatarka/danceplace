@@ -27,7 +27,11 @@
                     </li>
                 {% endif %}
 
-
+                {% if user.is_instructor %}
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Add Course</a>
+                    </li>
+                {% endif %}
 
             </ul>
         </div>
