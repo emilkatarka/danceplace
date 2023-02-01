@@ -8,8 +8,8 @@
     <h1>Courses List</h1>
     <ul>
         {% for course in courses %}
-            <li>{{ course.title }}</li>
-            {% empty %}
+            <li class="mb-3">{{ course.title }} <a href="{% url 'courses:course-edition' pk=course.id %}" class="btn btn-warning btn-sm ">Edit</a></li>
+        {% empty %}
             <p>No courses available</p>
         {% endfor %}
     </ul>

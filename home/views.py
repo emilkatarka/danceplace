@@ -2,10 +2,15 @@ from django.shortcuts import render, redirect
 
 from . import forms
 
-app_name = 'home' #namespace
+app_name = 'home'  # namespace
+
 
 def home(request):
     return render(request, 'home/home.html')
+
+# generic view
+# class HomeView(TemplateView):
+#     template_name = 'home/home.html'
 
 
 def contact_message_view(request):

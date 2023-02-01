@@ -29,7 +29,7 @@
 
                 {% if user.is_instructor %}
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Add Course</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'courses:course-creation' %}">Add Course</a>
                     </li>
                 {% endif %}
 

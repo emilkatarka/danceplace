@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     # local apps
     'home.apps.HomeConfig',
     'users.apps.UsersConfig',
+    'courses.apps.CoursesConfig',
 ]
 
 MIDDLEWARE = [
