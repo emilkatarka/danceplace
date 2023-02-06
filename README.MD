@@ -1,1 +1,1 @@
-dance place - a web app containing info about different dance courses
+Django WebApp for dance students and dance instructors. 
